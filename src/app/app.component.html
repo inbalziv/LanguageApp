@@ -1,3 +1,13 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="nev-main">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav" >
+      <li><a routerLink="">Home</a> </li>
+      <li><a routerLink="/cards_lists">Cards Lists</a> </li>
+      <li><a routerLink="/study_lists">Study Lists</a> </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
