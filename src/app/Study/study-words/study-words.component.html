@@ -9,8 +9,8 @@
 </div>
 <div *ngIf="buttonsResults" >
   <a>Is the answer correct?</a>
-  <button (click)="onFailed()">No</button>
-  <button (click)="onSucceed()">Yes</button>
+  <button (click)="resultsClicked(false)">No</button>
+  <button (click)="resultsClicked(true)">Yes</button>
 </div>
 </div>
 

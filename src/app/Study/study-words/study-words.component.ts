@@ -15,8 +15,6 @@ import {StudyOptions} from '../../Interfaces/study-options';
 export class StudyWordsComponent implements OnInit {
 
   _listName: any;
-
- // _StudyOptionsService: StudyOptionsService;
   _studyOptions: StudyOptions;
   buttonShowAnswer:boolean = true;
   name:any;
@@ -37,8 +35,6 @@ export class StudyWordsComponent implements OnInit {
     this._studyOptions = this._studyOptionsService.getStudyOptions();
   }
   ngOnInit() {
-
-
     this.sub = this.activatedRoute.params.subscribe(params => this.name = params['name']);
     this._router.events.subscribe((val) => {
       if(this._location.path() != ''){
@@ -75,19 +71,7 @@ export class StudyWordsComponent implements OnInit {
     this.buttonShowAnswer = true;
     this._showAnswer = false;
   }
-  private onFailed():void{
-    this.buttonsResults = false;
-    if (!this._studyOptions.repeatFails)
-      this.removeCard();
-    this.playCards();
-    this._cardAnswer = this._cards.length > 0 ? '' : this._cardAnswer;
-  }
-  private onSucceed():void{
-    this.buttonsResults = false;
-    this.removeCard();
-    this.playCards();
-    this._cardAnswer = this._cards.length > 0 ? '' : this._cardAnswer;
-  }
+
   private showAnswer():void{
     this._cardAnswer = this._studyOptions.frontFirst ? this._cards[this.index].back : this._cards[this.index].front;
     this.buttonShowAnswer = false;
@@ -111,6 +95,13 @@ export class StudyWordsComponent implements OnInit {
   }
   private nextCard():number{
     return this.getRandom(this._cards.length - 1);
+  }
+  private resultsClicked(succeed:boolean):void{
+    this.buttonsResults = false;
+    if ((!this._studyOptions.repeatFails) || (succeed))
+      this.removeCard();
+    this.playCards();
+    this._cardAnswer = this._cards.length > 0 ? '' : this._cardAnswer;
   }
 
 
