@@ -24,16 +24,20 @@ export const CARDS_LISTS:CardsLists[] =
     cards:
     [
       {
-        front: "f2-1",
-        back: "b2-1"
+        front: "Appliance q1",
+        back: "Appliance a1"
       },
       {
-        front: "f2-2",
-        back: "b2-2"
+        front: "Appliance q2",
+        back: "Appliance a2"
       },
       {
-        front: "f2-3",
-        back: "b2-3"
+        front: "Appliance q3",
+        back: "Appliance a3"
+      },
+      {
+        front: "Appliance q4",
+        back: "Appliance a4"
       }
     ]
   }

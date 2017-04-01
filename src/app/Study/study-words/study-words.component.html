@@ -1,0 +1,16 @@
+<div class="study-words">
+<p>
+  Name: {{_listName}}
+</p>
+<div>
+  <input class="tb" type="text" [(ngModel)]="_cardQuestion" readonly>
+  <input class="tb" type="text" [(ngModel)]="_cardAnswer" readonly>
+  <button *ngIf="buttonShowAnswer"  (click)="showAnswer()">Show Answer</button>
+</div>
+<div *ngIf="buttonsResults" >
+  <a>Is the answer correct?</a>
+  <button (click)="onFailed()">No</button>
+  <button (click)="onSucceed()">Yes</button>
+</div>
+</div>
+

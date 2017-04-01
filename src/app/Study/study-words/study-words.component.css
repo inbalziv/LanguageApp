@@ -1,0 +1,23 @@
+.tb {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid #555;
+
+}
+
+input[type=text] {
+  width: 25%;
+  height: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  color: #000;
+  text-align: center;
+  border: 1px solid #555;
+}
+.study-words{
+
+}

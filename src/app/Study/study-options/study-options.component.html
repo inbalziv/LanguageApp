@@ -1,0 +1,28 @@
+<h3>
+<div class="options">List Name Chosen is {{name}}</div>
+</h3>
+<form #options="ngForm" (ngSubmit)="onSubmit()" *ngIf="!isOn">
+  <div class="cb">
+    <input id="randomcb" type="checkbox" [(ngModel)]="_studyOptions.random" name="randomcb">
+    <label for="randomcb"></label>
+    <span>Random</span>
+  </div>
+<div class="cb">
+  <input id="repeatFailscb" type="checkbox" [(ngModel)]="_studyOptions.repeatFails" name="repeatFailscb"/>
+  <label for="repeatFailscb"></label>
+  <span>Repeat Fails</span>
+</div>
+  <div class="cb">
+    <input id="frontFirstcb" type="checkbox" [(ngModel)]="_studyOptions.frontFirst" name="frontFirstcb"/>
+    <label for="frontFirstcb"></label>
+    <span>Front First</span>
+  </div>
+<div>
+</div>
+  <a routerLink="study" routerLinkActive="active" (click)="setState()">Next</a>
+</form>
+<a routerLink="./" routerLinkActive="active" (click)="setState()" *ngIf="isOn">Back</a>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
