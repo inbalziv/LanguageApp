@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CardsListsService} from '../../Services/cards-lists.service';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cards-list.component.css']
 })
 export class CardsListComponent implements OnInit {
-
-  constructor() { }
+  _listName: string = '';
+  _listsNameArray: Array<string>;
+  buttonShowAdd: boolean = true;
+  constructor(private _cardsListsService:CardsListsService) { }
 
   ngOnInit() {
+    this.getListsName();
+  }
+  getListsName():void{
+    this._listsNameArray = this._cardsListsService.getListNames();
+  }
+  addList():void{
+
   }
 
 }
