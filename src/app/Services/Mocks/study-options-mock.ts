@@ -4,8 +4,8 @@
 import {StudyOptions} from "../../Interfaces/study-options";
 
 export const STUDY_OPTIONS:StudyOptions = {
-  random: true,
+  random: false,
   repeatFails: false,
-  frontFirst: true
+  frontFirst: false
 };
 

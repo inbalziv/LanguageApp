@@ -10,6 +10,7 @@ export class CardsListsService {
   constructor() {
     if (this.getCardsLists())
       this._CardsLists = this.getCardsLists();
+    //else this._CardsLists = [];
   }
 
   ngOnInit() {
@@ -18,6 +19,7 @@ export class CardsListsService {
 
   getCardsLists(): Array<CardsLists> {
     return CARDS_LISTS;
+   // return this._CardsLists;
   }
 
   getListNames(): Array<string> {
