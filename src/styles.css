@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+input[type=text] {
+  width: 20%;
+  padding: 8px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #555;
+  border-radius: 4px;
+  background-color: #e1dce6;
+}
+button{
+  width: 20%;
+  padding: 8px 20px;
+  border-radius: 4px;
+  border: 3px solid #555;
+  background-color: #e1dce6;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#page-wrap {
+  width: 800px;
+  margin: 0 auto;
+}
+body {
+  width: 110%;
+}

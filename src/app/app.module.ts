@@ -8,15 +8,11 @@ import { StudyOptionsService } from './Services/study-options.service';
 import { SelectedCardsListService } from './Services/selected-cards-list.service';
 import { AppComponent } from './app.component';
 import {routingComponents,AppRoutingModule} from './app.routing';
-import { AddCardsComponent } from './Lists/add-cards/add-cards.component';
-
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents,
-    AddCardsComponent
+    routingComponents
   ],
   imports: [
     BrowserModule,

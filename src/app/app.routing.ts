@@ -20,7 +20,6 @@ const routes: Routes = [
         path:'list/:name',
         component: AddCardsComponent
       }
-
     ]
   },
   {
@@ -38,10 +37,7 @@ const routes: Routes = [
         ]
       }
     ]
-
   }
-
-
 ];
 
 @NgModule({
@@ -53,4 +49,4 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
-export const routingComponents = [CardsListComponent,StudyListsComponent,StudyOptionsComponent,StudyWordsComponent];
+export const routingComponents = [CardsListComponent,StudyListsComponent,StudyOptionsComponent,StudyWordsComponent,AddCardsComponent];

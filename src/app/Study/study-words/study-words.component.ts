@@ -29,7 +29,8 @@ export class StudyWordsComponent implements OnInit {
   buttonsResults:boolean = false;
   _location: Location;
   _router: Router;
-  constructor(private activatedRoute: ActivatedRoute,private _cardsListsService:CardsListsService,location: Location,router: Router,private _studyOptionsService:StudyOptionsService) {
+  constructor(private activatedRoute: ActivatedRoute,private _cardsListsService:CardsListsService,
+              location: Location,router: Router,private _studyOptionsService:StudyOptionsService) {
     this._location = location;
     this._router = router;
     this._studyOptions = this._studyOptionsService.getStudyOptions();
@@ -62,8 +63,6 @@ export class StudyWordsComponent implements OnInit {
   }
   private ngOnDestroy() {
     this.sub.unsubscribe();
-
-
   }
 
   private displayQuestion():void{

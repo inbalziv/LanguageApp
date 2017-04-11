@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CardsListsService} from '../../Services/cards-lists.service';
+import {ActivatedRoute,Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +13,15 @@ export class CardsListComponent implements OnInit {
   buttonShowAdd: boolean;
   buttonShowEdit: boolean;
   buttonShowDelete: boolean;
-  index:number;
-  constructor(private _cardsListsService:CardsListsService) { }
+  setAddCards: boolean;
+  _index:number;
+  constructor(private _cardsListsService:CardsListsService){ }
 
   ngOnInit() {
     this.getListsName();
     this.initButtonsDisaply();
+    this.setAddCardsShow(false);
+
   }
   getListsName():void{
     this._listsNameArray = this._cardsListsService.getListNames();
@@ -25,21 +29,24 @@ export class CardsListComponent implements OnInit {
   addList():void{
     if (this._listName.trim())
       this._cardsListsService.createList(this._listName);
+    this.getListsName();
     this._listName = '';
   }
   editList():void{
     if (this._listName.trim())
-      this._cardsListsService.modifyListName(this._listsNameArray[this.index],this._listName);
+      this._cardsListsService.modifyListName(this._listsNameArray[this._index],this._listName);
     this.initButtonsDisaply();
+    this.getListsName();
   }
   deleteList():void{
     if (this._listName.trim())
       this._cardsListsService.deleteListName(this._listName);
     this.initButtonsDisaply();
+    this.getListsName();
   }
   listClicked(num:number):void{
-    this.index = num;
-    this._listName = this._listsNameArray[this.index];
+    this._index = num;
+    this._listName = this._listsNameArray[this._index];
     this.buttonShowEdit = true;
     this.buttonShowDelete = true;
     this.buttonShowAdd = false;
@@ -50,5 +57,13 @@ export class CardsListComponent implements OnInit {
     this.buttonShowDelete = false;
     this._listName = '';
 }
-
+  private setAddCardsShow(state:boolean):void
+  {
+    this.setAddCards = state;
+  }
+  private getListSelected():boolean{
+    if (this._listName)
+      return true;
+    else return false;
+  }
 }
