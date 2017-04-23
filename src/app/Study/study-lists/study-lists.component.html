@@ -1,11 +1,16 @@
-<h2>Lists</h2>
-<ul>
-  <li *ngFor='let listNa of _listsName; let i = index'>
-    <a [routerLink]="['list/',_listsName[i]]">{{_listsName[i]}}</a>
+<body>
+<div id="page-wrap">
+  <div *ngIf="!hideListPage">
+    <h2>Lists</h2>
+<ul class="page">
+  <li class="page" *ngFor='let listNa of _listsName; let i = index'>
+    <a class="page" (click)="hideList(true)" [routerLink]="['list/',_listsName[i]]">{{_listsName[i]}}</a>
   </li>
 </ul>
-
+</div>
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+</div>
+</body>
 

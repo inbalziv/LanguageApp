@@ -10,8 +10,19 @@ import {CardService} from "./Services/card.service";
 import {CardsListsService} from "./Services/cards-lists.service";
 import {StudyOptionsComponent} from "./Study/study-options/study-options.component";
 import { StudyWordsComponent } from './Study/study-words/study-words.component';
+import { LoginComponent } from './login/login.component';
+import { HomePageComponent } from './home-page/home-page.component';
+
 
 const routes: Routes = [
+  {
+    path:'login',
+    component: LoginComponent
+  },
+  {
+    path:'home',
+    component: HomePageComponent
+  },
   {
     path: 'cards_lists',
     component: CardsListComponent,
@@ -49,4 +60,4 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
-export const routingComponents = [CardsListComponent,StudyListsComponent,StudyOptionsComponent,StudyWordsComponent,AddCardsComponent];
+export const routingComponents = [HomePageComponent,LoginComponent,CardsListComponent,StudyListsComponent,StudyOptionsComponent,StudyWordsComponent,AddCardsComponent];

@@ -1,26 +1,22 @@
 <br>
 <body>
-<div id="page-wrap">
-  <div *ngIf="!setAddCards">
-    <label for="tbListname">List Name</label>
-    <input type="text" id="tbListname" [(ngModel)]="_listName" required>
-    <button id="addListname" (click)="addList()" *ngIf="buttonShowAdd">Add</button>
-    <button id="editListname" (click)="editList()" *ngIf="buttonShowEdit">Edit</button>
-    <button id="deleteListname" (click)="deleteList()" *ngIf="buttonShowDelete">Delete</button>
-
-  <h2>Lists</h2>
-  <ul>
-    <li *ngFor='let listNa of _listsNameArray; let i = index'>
-      <a (click)="listClicked(i)">{{_listsNameArray[i]}}</a>
-    </li>
-  </ul> </div>
-<br><br>
-  <div>
-    <button id="goToList" class="goToList"  *ngIf="!setAddCards" [routerLink]="['list/',_listsNameArray[_index]]" (click)="setAddCardsShow(true)">Go to List</button>
+  <div id="page-wrap">
+    <div  *ngIf="!setAddCards">
+      <label for="tbListname"  class="page">List Name</label>
+      <input type="text" id="tbListname"[(ngModel)]="_listName" required>
+      <button id="addListname" (click)="addList()">Add</button>
+      <h2>Lists</h2>
+      <ul class="list">
+        <li class="list" *ngFor='let listName of _listsNameArray; let i = index'>
+          <a [routerLink]="['list/',_listsNameArray[i]]" (click)="setAddCardsShow(true)">{{_listsNameArray[i]}}</a>
+          <button class="list" (click)="deleteList(listName)">Delete</button>
+        </li>
+      </ul>
+    </div>
+    <br><br>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
-</div>
 </body>

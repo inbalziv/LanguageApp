@@ -1,10 +1,9 @@
-//import {CardService} from "../../Services/card.service";
 import {Card} from "../../Interfaces/card";
 export const CARDS:Card[] =
   [
     {
       front:'home',
-      back:'case'
+      back:'casa'
     },
     {
       front:'hello',

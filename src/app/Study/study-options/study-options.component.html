@@ -1,7 +1,7 @@
-<h3>
-<div class="options">List Name Chosen is {{name}}</div>
-</h3>
 <form #options="ngForm" (ngSubmit)="onSubmit()" *ngIf="!isOn">
+  <h3>
+    <div class="options">List Name Chosen is {{name}}</div>
+  </h3>
   <div class="cb">
     <input id="randomcb" type="checkbox" [(ngModel)]="_studyOptions.random" name="randomcb">
     <label for="randomcb"></label>

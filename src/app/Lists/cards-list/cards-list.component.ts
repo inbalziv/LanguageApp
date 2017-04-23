@@ -10,16 +10,12 @@ import {ActivatedRoute,Router} from '@angular/router';
 export class CardsListComponent implements OnInit {
   _listName: string = '';
   _listsNameArray: Array<string>;
-  buttonShowAdd: boolean;
-  buttonShowEdit: boolean;
-  buttonShowDelete: boolean;
   setAddCards: boolean;
-  _index:number;
+  //_index:number;
   constructor(private _cardsListsService:CardsListsService){ }
 
   ngOnInit() {
     this.getListsName();
-    this.initButtonsDisaply();
     this.setAddCardsShow(false);
 
   }
@@ -32,38 +28,19 @@ export class CardsListComponent implements OnInit {
     this.getListsName();
     this._listName = '';
   }
-  editList():void{
-    if (this._listName.trim())
-      this._cardsListsService.modifyListName(this._listsNameArray[this._index],this._listName);
-    this.initButtonsDisaply();
+
+  deleteList(listName:string):void{
+    if (listName.trim())
+      this._cardsListsService.deleteListName(listName);
     this.getListsName();
   }
-  deleteList():void{
-    if (this._listName.trim())
-      this._cardsListsService.deleteListName(this._listName);
-    this.initButtonsDisaply();
-    this.getListsName();
-  }
-  listClicked(num:number):void{
-    this._index = num;
-    this._listName = this._listsNameArray[this._index];
-    this.buttonShowEdit = true;
-    this.buttonShowDelete = true;
-    this.buttonShowAdd = false;
-}
-  private initButtonsDisaply():void{
-    this.buttonShowAdd = true;
-    this.buttonShowEdit = false;
-    this.buttonShowDelete = false;
-    this._listName = '';
-}
   private setAddCardsShow(state:boolean):void
   {
     this.setAddCards = state;
   }
-  private getListSelected():boolean{
-    if (this._listName)
-      return true;
-    else return false;
-  }
+  // private getListSelected():boolean{
+  //   if (this._listName)
+  //     return true;
+  //   else return false;
+  // }
 }

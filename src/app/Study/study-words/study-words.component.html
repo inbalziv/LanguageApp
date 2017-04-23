@@ -1,16 +1,16 @@
 <div class="study-words">
 <p>
-  Name: {{_listName}}
+ <label> Name: {{_listName}}</label>
 </p>
 <div>
-  <input class="tb" type="text" [(ngModel)]="_cardQuestion" readonly>
-  <input class="tb" type="text" [(ngModel)]="_cardAnswer" readonly>
+  <input class="page" type="text" [(ngModel)]="_cardQuestion" readonly>
+  <input class="page" type="text" [(ngModel)]="_cardAnswer" readonly>
   <button *ngIf="buttonShowAnswer"  (click)="showAnswer()">Show Answer</button>
 </div>
 <div *ngIf="buttonsResults" >
   <a>Is the answer correct?</a>
-  <button (click)="resultsClicked(false)">No</button>
-  <button (click)="resultsClicked(true)">Yes</button>
+  <button class="page" (click)="resultsClicked(false)">No</button>
+  <button class="page" (click)="resultsClicked(true)">Yes</button>
 </div>
 </div>
 
