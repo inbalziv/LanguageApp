@@ -1,0 +1,43 @@
+#page-wrap cards{
+  position: absolute;
+  top: 15%;
+  min-height: 500px;
+  min-width: 800px;
+  bottom: 25%;
+  left: 13%;
+  right: 10%;
+}
+tr a{
+  display: block;
+  color: #000;
+  padding: 8px 60px;
+  text-decoration: none;
+  text-align: center;
+  border: 3px solid #555;
+  background-color: #e1dce6;
+  margin-left: -6px;
+  margin-bottom: 10px;
+
+}
+
+/* Change the link color on hover */
+td a:hover {
+  background-color: #555;
+  color: white;
+}
+td a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+td a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+ul{
+  list-style-type: none;
+}
+
+body {
+  width: 100%;
+}
+

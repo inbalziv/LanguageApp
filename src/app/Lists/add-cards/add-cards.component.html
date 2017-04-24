@@ -1,0 +1,28 @@
+<body>
+  <div id="page-wrap cards">
+    <h2>List Name: {{_listName}}</h2>
+
+    <label for="tbCardFront">Card Front</label>
+      <input  class="page" type="text" id="tbCardFront" [(ngModel)]="_card.front">
+    <label for="tbCardBack">Card Back</label>
+      <input type="text" id="tbCardBack" [(ngModel)]="_card.back">
+    <button  class="page" id="addListname" (click)="addCard()" *ngIf="buttonShowAdd">Add</button>
+    <button  class="page" id="editListname" (click)="editCard()" *ngIf="buttonShowEdit">Edit</button>
+    <button  class="page" id="deleteListname" (click)="deleteCard()" *ngIf="buttonShowDelete">Delete</button>
+
+  <ul>
+  <li *ngFor='let card of _cardsArray; let i = index'>
+    <a>
+      <table>
+        <tbody>
+        <tr>
+          <td><a (click)="cardClicked(i)">{{card.front}}</a></td>
+          <td><a (click)="cardClicked(i)">{{card.back}}</a></td>
+        </tr>
+        </tbody>
+      </table>
+      </a>
+  </li>
+</ul>
+</div>
+</body>
