@@ -12,12 +12,19 @@ import {StudyOptionsComponent} from "./Study/study-options/study-options.compone
 import { StudyWordsComponent } from './Study/study-words/study-words.component';
 import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import {Guard} from "./Services/auto.guard";
+import {LogoutComponent} from "./logout/logout/logout.component";
 
 
 const routes: Routes = [
   {
     path:'login',
     component: LoginComponent
+   // ,canActivate: [Guard]
+  },
+  {
+    path:'logout',
+    component: LogoutComponent
   },
   {
     path:'home',
@@ -60,4 +67,4 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
-export const routingComponents = [HomePageComponent,LoginComponent,CardsListComponent,StudyListsComponent,StudyOptionsComponent,StudyWordsComponent,AddCardsComponent];
+export const routingComponents = [LogoutComponent,HomePageComponent,LoginComponent,CardsListComponent,StudyListsComponent,StudyOptionsComponent,StudyWordsComponent,AddCardsComponent];
