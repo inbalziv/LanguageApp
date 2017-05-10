@@ -10,11 +10,11 @@ export class Guard implements CanActivate {
   }
 
   canActivate(routeSnapshot:ActivatedRouteSnapshot, state:RouterStateSnapshot){
-    if (this.srvUser.loggedIn())
+    if (this.srvUser.getLoggedIn())
     {
-      return true;
+      return false;
     }
   //  else this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-    else return false;
+    else return true;
   }
 }

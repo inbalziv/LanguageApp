@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import {UserService} from '../Services/user.service';
 import any = jasmine.any;
-//import {User} from "../Interfaces/user";
+import {User} from "../Interfaces/user";
 //import {Router} from "@angular/router";
 declare var gigya;
 
@@ -15,18 +15,21 @@ declare var gigya;
 
 
 export class LoginComponent implements OnInit,AfterContentInit {
-  public UID: string;
+  public _UID: string;
   public errorMsg = '';
   public isLoggedin:number;
   private _screenSet: string = 'Default-RegistrationLogin';
   private _containerID:string = 'screen-set';
   private dataLoading:boolean = false;
- // private _user: User;
+  private _user: User;
+
   constructor(private _srvUser: UserService) {
 
   }
 
   ngOnInit() {
+    this._user = this._srvUser.getUser();
+   // this._UID = this._srvUser.getUID();
   //  this.callScreenSet();
    // this.callGetAccountInfo();
   }
@@ -36,13 +39,26 @@ export class LoginComponent implements OnInit,AfterContentInit {
 
   public callScreenSet():void
   {
-    gigya.accounts.showScreenSet({screenSet: this._screenSet, containerID: this._containerID});
+    var params = {
+      callback: (response) =>  {
+        this._UID = response.UID;
+        if (response.errorCode != 0) {
+          gigya.accounts.showScreenSet({screenSet: this._screenSet, containerID: this._containerID});
+          this._srvUser.setLoggedIn(true);
+        }
+
+      }
+    };
+    gigya.accounts.getAccountInfo(params);
+
+
+
     // gigya.accounts.getJWT({callback: function (response) {
     //   if (response.errorCode != 0) {
     //     gigya.accounts.showScreenSet({screenSet: this._screenSet, containerID: this._containerID});
     //   }
     // }});
-    this.callGetAccountInfo();
+
    // this.UID = this._srvUser.getUID();
   }
 
@@ -55,19 +71,29 @@ export class LoginComponent implements OnInit,AfterContentInit {
 //     });
 //   }
 //
-public callGetAccountInfo():void{
+  public callGetAccountInfo():void
+  {
     var params = {
-       callback: function (response) {
+       callback: (response) =>  {
         if (response.errorCode == 0) {
-          this._srvUser.setUID(response.UID);
-           alert('UID: ' + response.UID);
-         // return response.errorCode;
+           this._UID = response.UID;
         }
+
       }
-    }
+    };
     gigya.accounts.getAccountInfo(params);
+    this.alertUID();
 
 }
-
+public alertUID():void
+{
+  alert('UID: ' + this._UID);
+}
 }
 
+// var UID = response.UID;
+// var srvUser: UserService;
+// srvUser.setUID(_UID);
+//  _srvUser.setUID(response.UID);
+
+// return response.errorCode;

@@ -14,13 +14,15 @@ import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import {Guard} from "./Services/auto.guard";
 import {LogoutComponent} from "./logout/logout/logout.component";
+import {LoginService} from "./Services/login.service";
+import {UserService} from "./Services/user.service";
 
 
 const routes: Routes = [
   {
     path:'login',
     component: LoginComponent
-   // ,canActivate: [Guard]
+    //,canActivate: [Guard]
   },
   {
     path:'logout',
@@ -33,6 +35,7 @@ const routes: Routes = [
   {
     path: 'cards_lists',
     component: CardsListComponent,
+    canActivate: [Guard],
     children: [
       {
         path:'list/:name',
@@ -43,6 +46,7 @@ const routes: Routes = [
   {
     path: 'study_lists',
     component: StudyListsComponent,
+    canActivate: [Guard],
     children: [
       {
         path:'list/:name',
@@ -63,7 +67,8 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [
     CardService,
-    CardsListsService
+    CardsListsService,
+  //  UserService,LoginService
   ]
 })
 export class AppRoutingModule { }
