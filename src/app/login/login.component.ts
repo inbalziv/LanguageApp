@@ -2,7 +2,8 @@ import { Component, OnInit, AfterContentInit } from '@angular/core';
 import {UserService} from '../Services/user.service';
 import any = jasmine.any;
 import {User} from "../Interfaces/user";
-//import {Router} from "@angular/router";
+import { Location } from '@angular/common';
+import {Router, UrlSerializer} from "@angular/router";
 declare var gigya;
 
 @Component({
@@ -14,7 +15,7 @@ declare var gigya;
 })
 
 
-export class LoginComponent implements OnInit,AfterContentInit {
+export class LoginComponent implements OnInit,AfterContentInit  {
   public _UID: string;
   public errorMsg = '';
   public isLoggedin:number;
@@ -22,16 +23,22 @@ export class LoginComponent implements OnInit,AfterContentInit {
   private _containerID:string = 'screen-set';
   private dataLoading:boolean = false;
   private _user: User;
-
-  constructor(private _srvUser: UserService) {
-
+  private _redirectPage;
+  private _location: string;
+  constructor(private _srvUser: UserService,location: Location,router:Router) {
+    this._redirectPage = '';
+   // this._location = location.path().;
+    this._location = decodeURIComponent(router.url);
   }
 
   ngOnInit() {
+
     this._user = this._srvUser.getUser();
-   // this._UID = this._srvUser.getUID();
-  //  this.callScreenSet();
-   // this.callGetAccountInfo();
+    if (this._location.indexOf('returnUrl') > 0)
+         this._redirectPage = 'http://localhost:4201/#' + this._location.slice(this._location.indexOf('returnUrl=')+10,this._location.length);
+
+
+
   }
   ngAfterContentInit() {
     this.callScreenSet();
@@ -43,7 +50,7 @@ export class LoginComponent implements OnInit,AfterContentInit {
       callback: (response) =>  {
         this._UID = response.UID;
         if (response.errorCode != 0) {
-          gigya.accounts.showScreenSet({screenSet: this._screenSet, containerID: this._containerID});
+          gigya.accounts.showScreenSet({screenSet: this._screenSet, containerID: this._containerID,redirectURL:this._redirectPage});
           this._srvUser.setLoggedIn(true);
         }
 
@@ -87,7 +94,7 @@ export class LoginComponent implements OnInit,AfterContentInit {
 }
 public alertUID():void
 {
-  alert('UID: ' + this._UID);
+ // alert('UID: ' + this._UID);
 }
 }
 

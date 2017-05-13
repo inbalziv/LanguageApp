@@ -5,8 +5,8 @@
       <li class="nav"><a routerLink="/home">Home</a> </li>
       <li class="nav"><a routerLink="/cards_lists">Cards Lists</a> </li>
       <li class="nav"><a routerLink="/study_lists">Study Lists</a> </li>
-      <li class="nav auth"><a routerLink="/login" *ngIf="!authenticated">Login</a> </li>
-      <li class="nav auth"><a routerLink="/logout" *ngIf="authenticated">Logout</a> </li>
+      <li class="nav auth"><a routerLink="/login" *ngIf="!authenticated" (click)="loginLogoutNav()">Login</a> </li>
+      <li class="nav auth"><a routerLink="/logout" *ngIf="authenticated" (click)="loginLogoutNav()">Logout</a> </li>
     </ul>
   </div>
 </nav>

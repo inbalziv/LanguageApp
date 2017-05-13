@@ -38,9 +38,5 @@ export class CardsListComponent implements OnInit {
   {
     this.setAddCards = state;
   }
-  // private getListSelected():boolean{
-  //   if (this._listName)
-  //     return true;
-  //   else return false;
-  // }
+
 }

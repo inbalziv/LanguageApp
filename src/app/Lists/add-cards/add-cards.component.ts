@@ -22,7 +22,7 @@ export class AddCardsComponent implements OnInit {
   _router: Router;
   _cardsArray:Array<Card> = [];
   _index:number;
- // _changeDetectionStrategy: ChangeDetectionStrategy.Default;
+
   constructor(private activatedRoute: ActivatedRoute,private _cardsListsService:CardsListsService,
               location: Location,router: Router,private _cdRef: ChangeDetectorRef) {
     this._location = location;

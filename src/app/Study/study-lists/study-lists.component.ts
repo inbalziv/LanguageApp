@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CardsListsService} from '../../Services/cards-lists.service';
+import {UserService} from "../../Services/user.service";
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,15 @@ import {CardsListsService} from '../../Services/cards-lists.service';
 export class StudyListsComponent implements OnInit {
   _listsName: Array<string>;
   hideListPage:boolean;
-  constructor(private _cardsListsService:CardsListsService){
+  isLoggedIn:boolean = false;
+  constructor(private _cardsListsService:CardsListsService, private srvUser: UserService){
 
   }
 
   ngOnInit() {
     this.getListsName();
     this.hideList(false);
+    this.isLoggedIn = this.srvUser.getLoggedIn();
   }
   getListsName():void{
     this._listsName = this._cardsListsService.getListNames();
