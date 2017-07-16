@@ -44,40 +44,24 @@ export class LoginComponent implements OnInit,AfterContentInit  {
     this.callScreenSet();
   }
 
-  public callScreenSet():void
-  {
+  public callScreenSet():void {
     var params = {
-      callback: (response) =>  {
+      callback: (response) => {
         this._UID = response.UID;
         if (response.errorCode != 0) {
-          gigya.accounts.showScreenSet({screenSet: this._screenSet, containerID: this._containerID,redirectURL:this._redirectPage});
+          gigya.accounts.showScreenSet({
+            screenSet: this._screenSet,
+            containerID: this._containerID,
+            redirectURL: this._redirectPage
+          });
           this._srvUser.setLoggedIn(true);
         }
 
       }
     };
     gigya.accounts.getAccountInfo(params);
-
-
-
-    // gigya.accounts.getJWT({callback: function (response) {
-    //   if (response.errorCode != 0) {
-    //     gigya.accounts.showScreenSet({screenSet: this._screenSet, containerID: this._containerID});
-    //   }
-    // }});
-
-   // this.UID = this._srvUser.getUID();
   }
 
-//   public getJWT():void
-//   {
-//     gigya.accounts.getJWT({
-//     callback: function (response) {
-//       return response.errorCode;
-//     }
-//     });
-//   }
-//
   public callGetAccountInfo():void
   {
     var params = {
@@ -91,16 +75,11 @@ export class LoginComponent implements OnInit,AfterContentInit  {
     gigya.accounts.getAccountInfo(params);
     this.alertUID();
 
-}
-public alertUID():void
-{
+  }
+  public alertUID():void
+  {
  // alert('UID: ' + this._UID);
-}
+  }
 }
 
-// var UID = response.UID;
-// var srvUser: UserService;
-// srvUser.setUID(_UID);
-//  _srvUser.setUID(response.UID);
 
-// return response.errorCode;

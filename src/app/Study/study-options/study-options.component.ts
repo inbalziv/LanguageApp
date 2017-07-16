@@ -23,7 +23,6 @@ export class StudyOptionsComponent implements OnInit {
   ngOnInit() {
     this.getListName();
     this.getOptions();
-
     this.sub = this.activatedRoute.params.subscribe(params => this.name = params['name']);
   }
   getListName():string{

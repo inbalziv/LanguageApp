@@ -22,9 +22,8 @@ export class StudyListsComponent implements OnInit {
     this.isLoggedIn = this.srvUser.getLoggedIn();
   }
   getListsName():void{
-    this._listsName = this._cardsListsService.getListNames();
+    this._listsName = this._cardsListsService.getNames();
   }
-
   //TBD: check if list is not empty
   hideList(hide:boolean):void{
     this.hideListPage = hide;
