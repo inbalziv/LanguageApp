@@ -1,8 +1,11 @@
-import { Component, OnInit,ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef, ChangeDetectionStrategy, Injectable } from '@angular/core';
 import {CardsListsService} from '../../Services/cards-lists.service';
 import {ActivatedRoute,Router} from '@angular/router';
 import {Card} from "../../Interfaces/card";
 import { Location } from '@angular/common';
+import {Observable} from "rxjs/Rx";
+import 'rxjs/add/operator/toPromise';
+import {Http, Headers, Response} from '@angular/http';
 
 @Component({
   selector: 'app-add-cards',
@@ -29,7 +32,7 @@ export class AddCardsComponent implements OnInit {
     this._router = router;
 
   }
-  ngOnInit() {
+ async ngOnInit() {
     this.sub = this.activatedRoute.params.subscribe(params => this.name = params['name']);
     this._router.events.subscribe((val) => {
       if(this._location.path() != '')
@@ -39,7 +42,7 @@ export class AddCardsComponent implements OnInit {
       }
     });
     this.getListName();
-    this._cardsArray = this._cardsListsService.getCards(this._listName);
+  //  await this._cardsArray = this.getCards();
     this.initButtonsDispaly();
   }
   private ngOnDestroy() {
@@ -83,7 +86,9 @@ export class AddCardsComponent implements OnInit {
     this.buttonShowDelete = false;
     this._card = {front:'',back:''};
   }
-  private getCards():void{
-    this._cardsArray = this._cardsListsService.getCards(this._listName);
+  //return this._cardsListsService.getCardsListsFromDB('1').toPromise().then((data) => data.CardLists);
+  getCards(){
+   // this._cardsArray = this._cardsListsService.getCards(this._listName);
+  //  return this._cardsListsService.getCards(this._listName).toPromise();
   }
 }

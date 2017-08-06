@@ -14,7 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import {Guard} from "./Services/auto.guard";
 import {LogoutComponent} from "./logout/logout/logout.component";
-import {LoginService} from "./Services/login.service";
+
 import {UserService} from "./Services/user.service";
 
 
@@ -68,7 +68,7 @@ const routes: Routes = [
   providers: [
     CardService,
     CardsListsService,
-  //  UserService,LoginService
+    UserService
   ]
 })
 export class AppRoutingModule { }

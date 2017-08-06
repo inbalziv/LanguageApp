@@ -31,14 +31,10 @@ export class LoginComponent implements OnInit,AfterContentInit  {
     this._location = decodeURIComponent(router.url);
   }
 
-  ngOnInit() {
-
-    this._user = this._srvUser.getUser();
+  async ngOnInit() {
+    this._user = await this._srvUser.getUser();
     if (this._location.indexOf('returnUrl') > 0)
          this._redirectPage = 'http://localhost:4201/#' + this._location.slice(this._location.indexOf('returnUrl=')+10,this._location.length);
-
-
-
   }
   ngAfterContentInit() {
     this.callScreenSet();
@@ -56,7 +52,6 @@ export class LoginComponent implements OnInit,AfterContentInit  {
           });
           this._srvUser.setLoggedIn(true);
         }
-
       }
     };
     gigya.accounts.getAccountInfo(params);
@@ -69,7 +64,6 @@ export class LoginComponent implements OnInit,AfterContentInit  {
         if (response.errorCode == 0) {
            this._UID = response.UID;
         }
-
       }
     };
     gigya.accounts.getAccountInfo(params);

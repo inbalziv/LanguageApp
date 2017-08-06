@@ -7,7 +7,6 @@ import { CardsListsService } from './Services/cards-lists.service';
 import { StudyOptionsService } from './Services/study-options.service';
 import { Guard } from './Services/auto.guard';
 import { UserService } from './Services/user.service';
-import {LoginService} from "./Services/login.service";
 import { SelectedCardsListService } from './Services/selected-cards-list.service';
 import { AppComponent } from './app.component';
 import {routingComponents,AppRoutingModule} from './app.routing';
@@ -27,7 +26,7 @@ import { LogoutComponent } from './logout/logout/logout.component';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [Guard,UserService,LoginService,CardService,CardsListsService,StudyOptionsService,SelectedCardsListService],
+  providers: [Guard,UserService,CardService,CardsListsService,StudyOptionsService,SelectedCardsListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

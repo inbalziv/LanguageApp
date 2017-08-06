@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CardsLists} from '../Interfaces/cards-lists';
 import {Card} from '../Interfaces/card';
-import {CARDS_LISTS} from './Mocks/cards-lists-mock';
+import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {Http, Response} from '@angular/http';
@@ -16,19 +16,11 @@ export class CardsListsService {
   constructor(http: Http) {
     this._http = http;
     this._cardsLists = new Array<CardsLists>();
-   // this.getCardsListsFromDB('1');
-
   }
 
-
-
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
   getCardsListsFromDB(uid:string) {
-    return this._http.get('http://localhost:51650/api/data/getdata/' + uid)
-      .map((res: Response) => res.json());
-        // .map((res.Response) => res["_body"].json());
+    return this._http.get('http://localhost:51650/api/data/getdata/' + uid).map((res: Response) => res.json());
   }
 
   getCardsLists(): Array<CardsLists>{
@@ -67,7 +59,9 @@ export class CardsListsService {
     }
     return _keys;
   }
-  getCards(listName: string): Array<Card> {
+
+
+  getCards(listName: string) {
     var _cards: Array<Card> = [];
     var _card: Card;
     if (this._cardsLists) {
@@ -142,5 +136,5 @@ export class CardsListsService {
   }
   setCardsList(list:Array<CardsLists>):void{
     this._cardsLists = list;
-}
+  }
 }
