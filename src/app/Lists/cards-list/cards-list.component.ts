@@ -18,7 +18,7 @@ export class CardsListComponent implements OnInit  {
   _listName: string = '';
  // _cardsLists:Array<Object>;
   setAddCards: boolean;
-  uid: string;
+  uid: string = '';
   sub: any;
   //_index:number;
   private _listsNameArray: Array<string> = [];
@@ -36,7 +36,7 @@ export class CardsListComponent implements OnInit  {
 
 
   async ngOnInit() {
-    this.uid = this.getUID();
+    await this._srvUser.getUID().then(id => {console.log(id);this.uid = id});
     this._cardsLists = await this.getLists();
     this._cardsListsService._cardsLists = this._cardsLists;
     this.getListsName();
@@ -47,7 +47,7 @@ export class CardsListComponent implements OnInit  {
     this._listsNameArray = this._cardsListsService.getNames();
   }
   getUID(){
-    return this._srvUser.getUID().toPromise().then((data) => data.UID.toString());
+    return this._srvUser.getUID();//.toPromise().then((data) => data.UID.toString());
   }
   addList():void{
     if (this._listName.trim())

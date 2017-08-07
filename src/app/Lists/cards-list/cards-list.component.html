@@ -2,6 +2,7 @@
 <body>
   <div id="page-wrap">
     <div  *ngIf="!setAddCards">
+      <p *ngIf="uid">uid={{uid}}</p>
       <label for="tbListname"  class="page">List Name</label>
       <input type="text" id="tbListname"[(ngModel)]="_listName" required>
       <button id="addListname" (click)="addList()">Add</button>
