@@ -19,8 +19,8 @@ export class StudyListsComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this._cardsLists = await this.getLists();
-    this._cardsLists = this._cardsListsService._cardsLists;
+ //   this._cardsLists = await this.getLists();
+    this._cardsLists = this._cardsListsService._cards;
     this.getListsName();
     this.hideList(false);
     this.isLoggedIn = this.srvUser.getLoggedIn();
@@ -33,7 +33,7 @@ export class StudyListsComponent implements OnInit {
     this.hideListPage = hide;
   }
   getLists() {
-    return this._cardsListsService.getCardsListsFromDB('1').toPromise().then((data) => data.CardLists);
+   // return this._cardsListsService.getCardsListsFromDB('1').toPromise().then((data) => data.CardLists);
     //     return this._cardsListsService.getCardsListsFromDB('1').toPromise().then((data) => data.CardLists.map(card => ({ name: card.name })));
 
   }

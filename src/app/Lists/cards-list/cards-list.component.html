@@ -2,7 +2,6 @@
 <body>
   <div id="page-wrap">
     <div  *ngIf="!setAddCards">
-      <p *ngIf="uid">uid={{uid}}</p>
       <label for="tbListname"  class="page">List Name</label>
       <input type="text" id="tbListname"[(ngModel)]="_listName" required>
       <button id="addListname" (click)="addList()">Add</button>
@@ -11,6 +10,8 @@
         <li class="list" *ngFor='let listName of _listsNameArray; let i = index'>
           <a [routerLink]="['list/',_listsNameArray[i]]" (click)="setAddCardsShow(true)">{{_listsNameArray[i]}}</a>
           <button class="list" (click)="deleteList(listName)">Delete</button>
+          &nbsp;
+          <button class="list" (click)="EditListname(listName)">Edit</button>
         </li>
       </ul>
     </div>

@@ -14,7 +14,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./cards-list.component.css']
 })
 export class CardsListComponent implements OnInit  {
-  //const p: Promise<string> = new Promise();
+
   _listName: string = '';
  // _cardsLists:Array<Object>;
   setAddCards: boolean;
@@ -24,50 +24,43 @@ export class CardsListComponent implements OnInit  {
   private _listsNameArray: Array<string> = [];
   private _cardsLists: Array<CardsLists> = [];
   constructor(public _cardsListsService:CardsListsService,private _srvUser: UserService, http: Http){
-    // this.uid = '1';
-    // http.get('http://localhost:51650/api/data/getdata/' + this.uid)
-    //   .map(response => response.json())
-    //   .subscribe(res => this._cardsLists =res.json());
-    //this.getLists();
-   // this._cardsLists =  this._cardsListsService.getCardsLists('1');
-   // this.getLists();
-   // this.getListsName();
+
   }
 
-
   async ngOnInit() {
-    await this._srvUser.getUID().then(id => {console.log(id);this.uid = id});
-    this._cardsLists = await this.getLists();
-    this._cardsListsService._cardsLists = this._cardsLists;
-    this.getListsName();
+    this.uid = await this.getUID();
+    this._listsNameArray = await this.getLists();
+   // this._cardsListsService._cardsLists = this._cardsLists;
+   // this.getListsName();
     this.setAddCardsShow(false);
   }
 
-  getListsName():void{
-    this._listsNameArray = this._cardsListsService.getNames();
-  }
+  // getListsName():void{
+  //   this._listsNameArray = this._cardsListsService.getNames();
+  // }
   getUID(){
-    return this._srvUser.getUID();//.toPromise().then((data) => data.UID.toString());
+    return this._srvUser.getUID();
   }
-  addList():void{
+  async addList(){
     if (this._listName.trim())
-      this._cardsListsService.createList(this._listName);
-    this.getListsName();
+    {
+      await this._cardsListsService.createList(this.uid, this._listName);
+      this._listsNameArray = await this.getLists();
+    }
     this._listName = '';
   }
   getLists() {
-    return this._cardsListsService.getCardsListsFromDB('1').toPromise().then((data) => data.CardLists);
-  //     return this._cardsListsService.getCardsListsFromDB('1').toPromise().then((data) => data.CardLists.map(card => ({ name: card.name })));
-
+    return this._cardsListsService.getListsNameFromDB(this.uid).toPromise().then((data) => data);
   }
   deleteList(listName:string):void{
     if (listName.trim())
-      this._cardsListsService.deleteListName(listName);
-    this.getListsName();
+      this._cardsListsService.deleteList(listName);
+    this.getLists();
   }
-  private setAddCardsShow(state:boolean):void
-  {
+  private setAddCardsShow(state:boolean):void {
     this.setAddCards = state;
   }
+  private EditListname( listName: string){
 
+  }
 }

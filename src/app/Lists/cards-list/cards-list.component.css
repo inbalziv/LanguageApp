@@ -1,7 +1,7 @@
 ul.list {
   list-style-type: none;
   padding: 0px;
-  width: 400px;
+  width: 500px;
   border-radius: 4px;
 }
 
@@ -9,7 +9,7 @@ li.list a{
   border: 1px solid #c4c4c4;
   background-color: #e1dce6;
   font-size: 15px;
-  width: 75%;
+  width: 55%;
   display: block;
   color: #000;
   margin-bottom: 6px;
@@ -55,11 +55,12 @@ button.list{
    background-color: #7bc1f7;
    font-weight: bold;
    font-size: 15px;
-   width: 20%;
+   width: 19%;
    height: 35px;
    border-radius: 4px;
    box-shadow: 0px 0px 8px #d9d9d9;
    float:right;
+   margin-left: 1%;
  }
 .test{
   border: 1px solid #c4c4c4;

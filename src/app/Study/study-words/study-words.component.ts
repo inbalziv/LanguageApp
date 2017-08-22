@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute,Router} from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { CardsListsService } from '../../Services/cards-lists.service';
 import { StudyOptionsService } from '../../Services/study-options.service';
-import {Card} from '../../Interfaces/card';
+import { Card } from '../../Interfaces/card';
 import { Location } from '@angular/common';
-import {StudyOptions} from '../../Interfaces/study-options';
-import {CardsLists} from '../../Interfaces/cards-lists';
+import { StudyOptions } from '../../Interfaces/study-options';
+import { CardsLists } from '../../Interfaces/cards-lists';
 @Component({
   selector: 'app-study-words',
   templateUrl: 'study-words.component.html',
@@ -35,7 +35,7 @@ export class StudyWordsComponent implements OnInit {
     this._location = location;
     this._router = router;
     this._studyOptions = this._studyOptionsService.getStudyOptions();
-    this._cardsLists = this._cardsListsService._cardsLists;
+    this._cardsLists = this._cardsListsService._cards;
   }
   ngOnInit() {
     this.sub = this.activatedRoute.params.subscribe(params => this.name = params['name']);
@@ -61,7 +61,7 @@ export class StudyWordsComponent implements OnInit {
   }
 
   getCardsList():void{
-    this._cards = this._cardsListsService.getCards(this.getListName());
+   // this._cards = this._cardsListsService.getCards(this.getListName());
   }
   private ngOnDestroy() {
     this.sub.unsubscribe();
